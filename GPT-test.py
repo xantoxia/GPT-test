@@ -37,7 +37,13 @@ if user_input:
         messages=st.session_state.messages
     )
 
+    # 打印 API 响应以调试
+    st.write(response)  # 查看返回的结构
+
     # 获取 AI 回复
-    reply = response.choices[0].message.content
-    st.chat_message("assistant").markdown(reply)
-    st.session_state.messages.append({"role": "assistant", "content": reply})
+    if 'choices' in response and len(response['choices']) > 0:
+        reply = response['choices'][0]['text']  # 假设使用 'text' 字段
+        st.chat_message("assistant").markdown(reply)
+        st.session_state.messages.append({"role": "assistant", "content": reply})
+    else:
+        st.error("未能获取有效的回复，检查 API 响应格式。")
