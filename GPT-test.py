@@ -32,7 +32,7 @@ if user_input:
 
     # 发送请求到 OpenAI
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=st.session_state.messages
     )
 
