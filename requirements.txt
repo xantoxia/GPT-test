@@ -9,3 +9,7 @@ streamlit-extras>=0.5.0
 PyGithub
 pdfkit
 fpdf
+openai
+python-docx
+PyMuPDF
+pillow
